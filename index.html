@@ -9,21 +9,28 @@
 <body>
 
     <h2>Table 1 (Loaded from CSV)</h2>
-    <table id="table1" border="1">
-        <thead>
-            <tr>
-                <th>A5</th>
-                <th>A7</th>
-                <th>A12</th>
-                <th>A13</th>
-                <th>A15</th>
-                <th>A20</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table rows will be added dynamically -->
-        </tbody>
-    </table>
+    <table id="table1">
+    <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+            <th>Column 5</th>
+            <th>Column 6</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Data will be added here -->
+    </tbody>
+</table>
+
+<div>
+    <span id="alphaValue"></span>
+    <span id="betaValue"></span>
+    <span id="charlieValue"></span>
+</div>
+
 
     <button onclick="downloadTable()">Download Table</button>
 
