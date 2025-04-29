@@ -1,23 +1,26 @@
-table {
-    width: 50%;
-    border-collapse: collapse;
-    margin: 20px 0;    
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding: 8px;
-    text-align: center;
-}
-
-th {
-    background-color: #f2f2f2;
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background-color: #fafafa;
 }
 
 .table-container {
-    margin: 20px auto;
-    width: 80%;
+  margin-bottom: 40px;
+}
+
+table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+th {
+  background-color: #eaeaea;
 }
