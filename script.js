@@ -1,3 +1,5 @@
+alert("Script is loaded!");
+
 // Fetch the values from Table 1
 const A5 = parseInt(document.getElementById("A5").textContent);
 const A7 = parseInt(document.getElementById("A7").textContent);
