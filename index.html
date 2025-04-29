@@ -3,63 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website for Assessment</title>
+    <title>Download Table</title>
 </head>
 <body>
+
+    <!-- Table 1 -->
+    <table border="1">
+        <tr>
+            <th>A5</th>
+            <th>A7</th>
+            <th>A12</th>
+            <th>A13</th>
+            <th>A15</th>
+            <th>A20</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>2</td>
+            <td>5</td>
+            <td>6</td>
+            <td>30</td>
+            <td>15</td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+
+    <!-- Download Button -->
     <button onclick="downloadTable()">Download Table</button>
 
-    <h1>Table 1: Data</h1>
-    <table border="1">
-        <tr>
-            <th>Variable</th>
-            <th>Value</th>
-        </tr>
-        <tr>
-            <td>A5</td>
-            <td id="A5">10</td> <!-- Example value -->
-        </tr>
-        <tr>
-            <td>A7</td>
-            <td id="A7">5</td>
-        </tr>
-        <tr>
-            <td>A13</td>
-            <td id="A13">12</td>
-        </tr>
-        <tr>
-            <td>A12</td>
-            <td id="A12">3</td>
-        </tr>
-        <tr>
-            <td>A15</td>
-            <td id="A15">30</td>
-        </tr>
-        <tr>
-            <td>A20</td>
-            <td id="A20">50</td>
-        </tr>
-    </table>
-
-    <h2>Table 2: Calculated Values</h2>
-    <table border="1">
-        <tr>
-            <th>Category</th>
-            <th>Value</th>
-        </tr>
-        <tr>
-            <td>Alpha</td>
-            <td id="alpha-value"></td>
-        </tr>
-        <tr>
-            <td>Beta</td>
-            <td id="beta-value"></td>
-        </tr>
-        <tr>
-            <td>Charlie</td>
-            <td id="charlie-value"></td>
-        </tr>
-    </table>
-
-    <script src="script.js"></script>
+    <!-- Script -->
+    <script>
+        function downloadTable() {
+            // Select the table
+            let table = document.querySelector('table');
+            
+            // Initialize an empty string for CSV content
+            let csvContent = '';
+            
+            // Loop through each row in the table
+            let rows = Array.from(table.rows);
+            rows.forEach(row => {
+                // Get all the cells of the row
+                let cells = Array.from(row.cells);
+                
+                // Join each cell's text into a string separated by commas
+                let cellText = cells.map(cell => cell.textContent).join(',');
+                
+                // Add the row to the CSV content
+                csvContent += cellText + '\n';
+            });
+            
+            // Create an invisible download link
+            let hiddenElement = document.createElement('a');
+            
+            // Set the data URL to a CSV format with the content we created
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+            
+            // Make the link behave like a file download
+            hiddenElement.target = '_blank';
+            hiddenElement.download = 'table1.csv'; // Set the file name
+            
+            // Trigger the download by clicking the link
+            hiddenElement.click();
+        }
+    </script>
 </body>
 </html>
