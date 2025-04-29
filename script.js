@@ -1,11 +1,39 @@
+// Fetch the CSV from a URL
+async function loadCSVData() {
+    const url = 'YOUR_CSV_PUBLIC_URL'; // Replace with the actual URL of your CSV file
+
+    // Fetch the CSV file
+    const response = await fetch(url);
+    const csvText = await response.text();
+
+    // Parse CSV into an array of rows
+    const rows = csvText.split('\n').map(row => row.split(','));
+
+    // Add rows to Table 1
+    const table1 = document.querySelector('#table1 tbody');
+    rows.forEach(row => {
+        const tr = document.createElement('tr');
+        row.forEach(cell => {
+            const td = document.createElement('td');
+            td.textContent = cell.trim();
+            tr.appendChild(td);
+        });
+        table1.appendChild(tr);
+    });
+
+    // Process Table 2 values
+    processTable(rows);
+}
+
 // Function to calculate processed values for Table 2
-function processTable() {
-    const a5 = 10;
-    const a7 = 2;
-    const a12 = 5;
-    const a13 = 6;
-    const a15 = 30;
-    const a20 = 15;
+function processTable(rows) {
+    // Assuming your data is at index 1 (second row) as per your example
+    const a5 = parseFloat(rows[1][0]); // A5
+    const a7 = parseFloat(rows[1][1]); // A7
+    const a12 = parseFloat(rows[1][2]); // A12
+    const a13 = parseFloat(rows[1][3]); // A13
+    const a15 = parseFloat(rows[1][4]); // A15
+    const a20 = parseFloat(rows[1][5]); // A20
 
     // Calculate values for Table 2
     const alpha = a5 + a20;
@@ -17,9 +45,6 @@ function processTable() {
     document.getElementById('betaValue').innerText = beta;
     document.getElementById('charlieValue').innerText = charlie;
 }
-
-// Call processTable function to display values on page load
-window.onload = processTable;
 
 // Function to download the table as CSV
 function downloadTable() {
@@ -53,3 +78,6 @@ function downloadTable() {
     // Trigger the download by clicking the link
     hiddenElement.click();
 }
+
+// Load the CSV data on page load
+window.onload = loadCSVData;
