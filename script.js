@@ -22,3 +22,21 @@ console.log("Charlie: " + charlie);
 document.getElementById("alpha-value").textContent = alpha;
 document.getElementById("beta-value").textContent = beta;
 document.getElementById("charlie-value").textContent = charlie;
+
+function downloadTable() {
+    let table = document.querySelector('table');
+    let rows = Array.from(table.rows);
+    let csvContent = '';
+
+    rows.forEach(row => {
+        let cells = Array.from(row.cells);
+        let cellText = cells.map(cell => cell.textContent).join(',');
+        csvContent += cellText + '\n';
+    });
+
+    let hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'table1.csv';
+    hiddenElement.click();
+}
