@@ -1,17 +1,17 @@
-// Get the values for the calculations
-const a5 = 2;
-const a20 = 28;
-const a15 = 80;
-const a7 = 5;
-const a13 = 90;
-const a12 = 3;
+// Values from Table 1
+const values = {
+  A1: 41, A2: 18, A3: 21, A4: 63, A5: 2,
+  A6: 53, A7: 5, A8: 57, A9: 60, A10: 93,
+  A11: 28, A12: 3, A13: 90, A14: 39, A15: 80,
+  A16: 88, A17: 49, A18: 60, A19: 26, A20: 28
+};
 
-// Calculate the values for Alpha, Beta, and Charlie
-const alpha = a5 + a20;
-const beta = a15 / a7;
-const charlie = a13 * a12;
+// Calculate results
+const alpha = values.A5 + values.A20;
+const beta = (values.A7 !== 0) ? (values.A15 / values.A7).toFixed(2) : "Undefined";
+const charlie = values.A13 * values.A12;
 
-// Display the calculated values in the table
-document.getElementById('alpha-value').innerText = alpha;
-document.getElementById('beta-value').innerText = beta.toFixed(2); // Limit to 2 decimal places
-document.getElementById('charlie-value').innerText = charlie;
+// Display in Table 2
+document.getElementById("alpha-value").textContent = alpha;
+document.getElementById("beta-value").textContent = beta;
+document.getElementById("charlie-value").textContent = charlie;
