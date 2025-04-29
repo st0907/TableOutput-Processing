@@ -2,17 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSV Table Display</title>
+    <title>CSV Table Viewer</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h2>Upload CSV File</h2>
-    <form id="uploadForm" enctype="multipart/form-data" method="post" action="process.php">
-        <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
-        <button type="submit">Display Table</button>
-    </form>
+    <h1>CSV Table Viewer</h1>
+    <input type="file" id="csvFile" accept=".csv">
+    <button onclick="handleCSV()">Display Table</button>
 
-    <div id="tableContainer"></div>
+    <h2>Table 1 (CSV Data)</h2>
+    <table id="table1">
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2>Table 2 (Processed Values)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Alpha</td><td id="alphaValue"></td></tr>
+            <tr><td>Beta</td><td id="betaValue"></td></tr>
+            <tr><td>Charlie</td><td id="charlieValue"></td></tr>
+        </tbody>
+    </table>
 </body>
 </html>
