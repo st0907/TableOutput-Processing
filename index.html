@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Display and Download</title>
-    <script src="script.js" defer></script> <!-- Link to the external JS file -->
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <!-- Table 1: Display the original table -->
-    <h2>Table 1</h2>
+    <h2>Table 1 (Loaded from CSV)</h2>
     <table id="table1" border="1">
         <thead>
             <tr>
@@ -22,23 +21,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>10</td>
-                <td>2</td>
-                <td>5</td>
-                <td>6</td>
-                <td>30</td>
-                <td>15</td>
-            </tr>
-            <!-- Add more rows as needed -->
+            <!-- Table rows will be added dynamically -->
         </tbody>
     </table>
 
-    <!-- Button to download the table -->
     <button onclick="downloadTable()">Download Table</button>
 
-    <!-- Table 2: Processed Values -->
-    <h2>Table 2</h2>
+    <h2>Table 2 (Processed Values)</h2>
     <table border="1">
         <thead>
             <tr>
@@ -61,6 +50,6 @@
             </tr>
         </tbody>
     </table>
-    
+
 </body>
 </html>
