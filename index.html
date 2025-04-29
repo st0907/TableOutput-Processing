@@ -2,36 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSV Import and Display</title>
+    <title>CSV Table Display</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-
-    <h2>Import CSV File</h2>
-
-    <div class="upload-section">
-        <input type="file" id="csvFile" accept=".csv">
-        <button onclick="readCSV()">Display Table</button>
-    </div>
-
-    <table id="csvTable">
-        <thead>
-            <tr>
-                <th>Column</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table content will be inserted here -->
-        </tbody>
-    </table>
-
-    <h3>Optional: Upload CSV to Server</h3>
-    <form action="process.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".csv" required>
-        <button type="submit">Upload</button>
+    <h2>Upload CSV File</h2>
+    <form id="uploadForm" enctype="multipart/form-data" method="post" action="process.php">
+        <input type="file" name="csvFile" id="csvFile" accept=".csv" required>
+        <button type="submit">Display Table</button>
     </form>
 
+    <div id="tableContainer"></div>
 </body>
 </html>
