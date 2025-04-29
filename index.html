@@ -2,61 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Display and Download</title>
+    <title>CSV Import and Display</title>
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
-    <h2>Table 1 (Loaded from CSV)</h2>
-    <table id="table1">
-    <thead>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-            <th>Column 3</th>
-            <th>Column 4</th>
-            <th>Column 5</th>
-            <th>Column 6</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Data will be added here -->
-    </tbody>
-</table>
+    <h2>Import CSV File</h2>
 
-<div>
-    <h3>Processed Values:</h3>
-    <span id="alphaSpan"></span>
-    <span id="betaSpan"></span>
-    <span id="charlieSpan"></span>
-</div>
+    <div class="upload-section">
+        <input type="file" id="csvFile" accept=".csv">
+        <button onclick="readCSV()">Display Table</button>
+    </div>
 
-<button onclick="downloadTable()">Download Table</button>
+    <table id="csvTable">
+        <thead>
+            <tr>
+                <th>Column</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table content will be inserted here -->
+        </tbody>
+    </table>
 
-<h2>Table 2 (Processed Values)</h2>
-<table border="1">
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Alpha</td>
-            <td id="alphaTable"></td>
-        </tr>
-        <tr>
-            <td>Beta</td>
-            <td id="betaTable"></td>
-        </tr>
-        <tr>
-            <td>Charlie</td>
-            <td id="charlieTable"></td>
-        </tr>
-    </tbody>
-</table>
+    <h3>Optional: Upload CSV to Server</h3>
+    <form action="process.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv" required>
+        <button type="submit">Upload</button>
+    </form>
 
 </body>
 </html>
