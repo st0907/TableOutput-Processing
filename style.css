@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 200px;
   background-color: #fafafa;
 }
 
@@ -17,7 +17,7 @@ table {
 
 th, td {
   border: 1px solid #ccc;
-  padding: 10px 3px;
+  padding: 10px 15px;
   text-align: center;
 }
 
