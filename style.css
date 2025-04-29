@@ -3,21 +3,22 @@ body {
     margin: 20px;
 }
 
-table {
-    width: 50%;
-    border-collapse: collapse;
-    margin-top: 20px;
+h1, h2 {
+    color: #333;
 }
 
-table, th, td {
-    border: 1px solid #333;
+table {
+    border-collapse: collapse;
+    width: 60%;
+    margin-top: 15px;
 }
 
 th, td {
-    padding: 10px;
+    border: 1px solid #aaa;
+    padding: 8px;
     text-align: left;
 }
 
-h2 {
+#csvFile {
     margin-bottom: 10px;
 }
