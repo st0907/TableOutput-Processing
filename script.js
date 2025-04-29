@@ -7,31 +7,44 @@ function processTableData() {
     const A15 = parseInt(document.getElementById('A15').innerText);
     const A20 = parseInt(document.getElementById('A20').innerText);
 
-    // Calculate values for Table 2
-    const alphaValue = A5 + A20;        // A5 + A20
-    const betaValue = A15 / A7;         // A15 / A7
-    const charlieValue = A13 * A12;     // A13 * A12
+    // Prepare data to send to the PHP backend
+    const formData = new FormData();
+    formData.append('A5', A5);
+    formData.append('A7', A7);
+    formData.append('A12', A12);
+    formData.append('A13', A13);
+    formData.append('A15', A15);
+    formData.append('A20', A20);
 
-    // Generate Table 2
-    const table2 = `
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Alpha</td><td>${alphaValue}</td></tr>
-                <tr><td>Beta</td><td>${betaValue}</td></tr>
-                <tr><td>Charlie</td><td>${charlieValue}</td></tr>
-            </tbody>
-        </table>
-    `;
-    
-    // Display the table in the container
-    document.getElementById('table2-container').innerHTML = table2;
+    // Send the data using AJAX
+    fetch('process.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Generate Table 2 with the processed data
+        const table2 = `
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Alpha</td><td>${data.alpha}</td></tr>
+                    <tr><td>Beta</td><td>${data.beta}</td></tr>
+                    <tr><td>Charlie</td><td>${data.charlie}</td></tr>
+                </tbody>
+            </table>
+        `;
+        
+        // Display the table in the container
+        document.getElementById('table2-container').innerHTML = table2;
+    });
 }
 
 // Call the function when the page loads
 window.onload = processTableData;
+
