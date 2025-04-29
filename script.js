@@ -11,6 +11,11 @@ const alpha = A5 + A20;
 const beta = A15 / A7;
 const charlie = A13 * A12;
 
+// Debugging: Check values in the console
+console.log("Alpha: " + alpha);
+console.log("Beta: " + beta);
+console.log("Charlie: " + charlie);
+
 // Display the calculated values in Table 2
 document.getElementById("alpha-value").textContent = alpha;
 document.getElementById("beta-value").textContent = beta;
