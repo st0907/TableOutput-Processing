@@ -2,39 +2,165 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CSV Table Viewer</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Table Display</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .table-container {
+            margin: 20px auto;
+            width: 80%;
+        }
+    </style>
 </head>
 <body>
-    <h1>CSV Table Viewer</h1>
-    <input type="file" id="csvFile" accept=".csv">
-    <button onclick="handleCSV()">Display Table</button>
-
-    <h2>Table 1 (CSV Data)</h2>
-    <table id="table1">
-        <thead>
+    <div class="table-container">
+        <h2>Table 1: CSV Data</h2>
+        <table>
             <tr>
-                <th>Column</th>
+                <th>Index</th>
                 <th>Value</th>
             </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+            <tr>
+                <td>A1</td>
+                <td>41</td>
+            </tr>
+            <tr>
+                <td>A2</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>A3</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>A4</td>
+                <td>63</td>
+            </tr>
+            <tr>
+                <td>A5</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>A6</td>
+                <td>53</td>
+            </tr>
+            <tr>
+                <td>A7</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>A8</td>
+                <td>57</td>
+            </tr>
+            <tr>
+                <td>A9</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>A10</td>
+                <td>93</td>
+            </tr>
+            <tr>
+                <td>A11</td>
+                <td>28</td>
+            </tr>
+            <tr>
+                <td>A12</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>A13</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>A14</td>
+                <td>39</td>
+            </tr>
+            <tr>
+                <td>A15</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>A16</td>
+                <td>88</td>
+            </tr>
+            <tr>
+                <td>A17</td>
+                <td>49</td>
+            </tr>
+            <tr>
+                <td>A18</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>A19</td>
+                <td>26</td>
+            </tr>
+            <tr>
+                <td>A20</td>
+                <td>28</td>
+            </tr>
+        </table>
+    </div>
 
-    <h2>Table 2 (Processed Values)</h2>
-    <table>
-        <thead>
+    <div class="table-container">
+        <h2>Table 2: Calculated Values</h2>
+        <table>
             <tr>
                 <th>Category</th>
                 <th>Value</th>
             </tr>
-        </thead>
-        <tbody>
-            <tr><td>Alpha</td><td id="alphaValue"></td></tr>
-            <tr><td>Beta</td><td id="betaValue"></td></tr>
-            <tr><td>Charlie</td><td id="charlieValue"></td></tr>
-        </tbody>
-    </table>
+            <tr>
+                <td>Alpha</td>
+                <td id="alpha-value"></td>
+            </tr>
+            <tr>
+                <td>Beta</td>
+                <td id="beta-value"></td>
+            </tr>
+            <tr>
+                <td>Charlie</td>
+                <td id="charlie-value"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Get the values for the calculations
+        const a5 = 2;
+        const a20 = 28;
+        const a15 = 80;
+        const a7 = 5;
+        const a13 = 90;
+        const a12 = 3;
+
+        // Calculate the values for Alpha, Beta, and Charlie
+        const alpha = a5 + a20;
+        const beta = a15 / a7;
+        const charlie = a13 * a12;
+
+        // Display the calculated values in the table
+        document.getElementById('alpha-value').innerText = alpha;
+        document.getElementById('beta-value').innerText = beta.toFixed(2); // Limit to 2 decimal places
+        document.getElementById('charlie-value').innerText = charlie;
+    </script>
 </body>
 </html>
