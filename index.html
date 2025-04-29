@@ -3,69 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Table</title>
+    <title>Table Display and Download</title>
+    <script src="script.js" defer></script> <!-- Link to the external JS file -->
 </head>
 <body>
 
-    <!-- Table 1 -->
-    <table border="1">
-        <tr>
-            <th>A5</th>
-            <th>A7</th>
-            <th>A12</th>
-            <th>A13</th>
-            <th>A15</th>
-            <th>A20</th>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>2</td>
-            <td>5</td>
-            <td>6</td>
-            <td>30</td>
-            <td>15</td>
-        </tr>
-        <!-- Add more rows as needed -->
+    <!-- Table 1: Display the original table -->
+    <h2>Table 1</h2>
+    <table id="table1" border="1">
+        <thead>
+            <tr>
+                <th>A5</th>
+                <th>A7</th>
+                <th>A12</th>
+                <th>A13</th>
+                <th>A15</th>
+                <th>A20</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10</td>
+                <td>2</td>
+                <td>5</td>
+                <td>6</td>
+                <td>30</td>
+                <td>15</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
     </table>
 
-    <!-- Download Button -->
+    <!-- Button to download the table -->
     <button onclick="downloadTable()">Download Table</button>
 
-    <!-- Script -->
-    <script>
-        function downloadTable() {
-            // Select the table
-            let table = document.querySelector('table');
-            
-            // Initialize an empty string for CSV content
-            let csvContent = '';
-            
-            // Loop through each row in the table
-            let rows = Array.from(table.rows);
-            rows.forEach(row => {
-                // Get all the cells of the row
-                let cells = Array.from(row.cells);
-                
-                // Join each cell's text into a string separated by commas
-                let cellText = cells.map(cell => cell.textContent).join(',');
-                
-                // Add the row to the CSV content
-                csvContent += cellText + '\n';
-            });
-            
-            // Create an invisible download link
-            let hiddenElement = document.createElement('a');
-            
-            // Set the data URL to a CSV format with the content we created
-            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
-            
-            // Make the link behave like a file download
-            hiddenElement.target = '_blank';
-            hiddenElement.download = 'table1.csv'; // Set the file name
-            
-            // Trigger the download by clicking the link
-            hiddenElement.click();
-        }
-    </script>
+    <!-- Table 2: Processed Values -->
+    <h2>Table 2</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Alpha</td>
+                <td id="alphaValue"> </td>
+            </tr>
+            <tr>
+                <td>Beta</td>
+                <td id="betaValue"> </td>
+            </tr>
+            <tr>
+                <td>Charlie</td>
+                <td id="charlieValue"> </td>
+            </tr>
+        </tbody>
+    </table>
+    
 </body>
 </html>
