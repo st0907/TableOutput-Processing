@@ -1,33 +1,34 @@
-function readCSV() {
-    const input = document.getElementById('csvFile');
-    const file = input.files[0];
+document.getElementById("uploadForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    if (!file) {
-        alert('Please select a CSV file');
+    const formData = new FormData(this);
+
+    fetch("process.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => displayTable(data))
+    .catch(error => {
+        console.error("Error:", error);
+        document.getElementById("tableContainer").innerHTML = "<p>Failed to load table.</p>";
+    });
+});
+
+function displayTable(data) {
+    if (data.length === 0) {
+        document.getElementById("tableContainer").innerHTML = "<p>No data to display.</p>";
         return;
     }
 
-    const reader = new FileReader();
+    let html = `<h2>Table</h2><table><thead><tr><th>Column</th><th>Value</th></tr></thead><tbody>`;
 
-    reader.onload = function (e) {
-        const text = e.target.result.trim();
-        const rows = text.split('\n').map(row => row.split(','));
+    data.forEach(row => {
+        if (row.length === 2) {
+            html += `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`;
+        }
+    });
 
-        const tbody = document.querySelector('#csvTable tbody');
-        tbody.innerHTML = ''; // Clear previous rows
-
-        rows.forEach(row => {
-            if (row.length >= 2) {
-                const tr = document.createElement('tr');
-                row.slice(0, 2).forEach(cell => {
-                    const td = document.createElement('td');
-                    td.textContent = cell.trim();
-                    tr.appendChild(td);
-                });
-                tbody.appendChild(tr);
-            }
-        });
-    };
-
-    reader.readAsText(file);
+    html += `</tbody></table>`;
+    document.getElementById("tableContainer").innerHTML = html;
 }
