@@ -3,49 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Processing Example</title>
-    <script src="script.js"></script> <!-- Link to JavaScript -->
+    <title>Website for Assessment</title>
 </head>
 <body>
-    <h1>Table 1 - Original Data</h1>
+    <h1>Table 1: Data</h1>
     <table border="1">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Alpha</td>
-                <td id="A5">5</td>
-            </tr>
-            <tr>
-                <td>Beta</td>
-                <td id="A7">7</td>
-            </tr>
-            <tr>
-                <td>Charlie</td>
-                <td id="A12">12</td>
-            </tr>
-            <tr>
-                <td>Delta</td>
-                <td id="A13">13</td>
-            </tr>
-            <tr>
-                <td>Alpha Additional</td>
-                <td id="A20">20</td>
-            </tr>
-            <tr>
-                <td>Beta Additional</td>
-                <td id="A15">15</td>
-            </tr>
-        </tbody>
+        <tr>
+            <th>Variable</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>A5</td>
+            <td id="A5">10</td> <!-- Example value -->
+        </tr>
+        <tr>
+            <td>A7</td>
+            <td id="A7">5</td>
+        </tr>
+        <tr>
+            <td>A13</td>
+            <td id="A13">12</td>
+        </tr>
+        <tr>
+            <td>A12</td>
+            <td id="A12">3</td>
+        </tr>
+        <tr>
+            <td>A15</td>
+            <td id="A15">30</td>
+        </tr>
+        <tr>
+            <td>A20</td>
+            <td id="A20">50</td>
+        </tr>
     </table>
 
-    <h1>Table 2 - Processed Data</h1>
-    <div id="table2-container">
-        <!-- Processed table will be shown here -->
-    </div>
+    <h2>Table 2: Calculated Values</h2>
+    <table border="1">
+        <tr>
+            <th>Category</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Alpha</td>
+            <td id="alpha-value"></td>
+        </tr>
+        <tr>
+            <td>Beta</td>
+            <td id="beta-value"></td>
+        </tr>
+        <tr>
+            <td>Charlie</td>
+            <td id="charlie-value"></td>
+        </tr>
+    </table>
+
+    <script src="script.js"></script>
 </body>
 </html>
