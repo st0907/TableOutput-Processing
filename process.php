@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // Example values from Table 1 (normally, you'd get these from a database or form submission)
 $A5 = 10;
 $A7 = 5;
