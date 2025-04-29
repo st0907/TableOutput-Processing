@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const alpha = values.A5 + values.A20;
-  const beta = (values.A7 !== 0) ? (values.A15 / values.A7).toFixed(2) : "Undefined";
+  let betaRaw = values.A15 / values.A7;
+  const beta = Number.isInteger(betaRaw) ? betaRaw : betaRaw.toFixed(2);
   const charlie = values.A13 * values.A12;
 
   document.getElementById("alpha-value").textContent = alpha;
