@@ -11,23 +11,25 @@ async function loadCSVData() {
 
     // Add rows to Table 1
     const table1 = document.querySelector('#table1 tbody');
-    rows.forEach(row => {
-        const tr = document.createElement('tr');
-        row.forEach(cell => {
-            const td = document.createElement('td');
-            td.textContent = cell.trim();
-            tr.appendChild(td);
-        });
-        table1.appendChild(tr);
+    rows.forEach((row, index) => {
+        if (index > 0 && row.length === 6) { // Skip the header row and ensure we have 6 columns
+            const tr = document.createElement('tr');
+            row.forEach(cell => {
+                const td = document.createElement('td');
+                td.textContent = cell.trim();
+                tr.appendChild(td);
+            });
+            table1.appendChild(tr);
+        }
     });
 
-    // Process Table 2 values
+    // Process Table 2 values after loading Table 1
     processTable(rows);
 }
 
 // Function to calculate processed values for Table 2
 function processTable(rows) {
-    // Assuming your data is at index 1 (second row) as per your example
+    // Assuming your data is in the second row (index 1), and columns are in the correct order
     const a5 = parseFloat(rows[1][0]); // A5
     const a7 = parseFloat(rows[1][1]); // A7
     const a12 = parseFloat(rows[1][2]); // A12
@@ -41,9 +43,9 @@ function processTable(rows) {
     const charlie = a13 * a12;
 
     // Display the processed values in Table 2
-    document.getElementById('alphaValue').innerText = alpha;
-    document.getElementById('betaValue').innerText = beta;
-    document.getElementById('charlieValue').innerText = charlie;
+    document.getElementById('alphaValue').innerText = alpha.toFixed(2); // Show result with two decimal places
+    document.getElementById('betaValue').innerText = beta.toFixed(2);
+    document.getElementById('charlieValue').innerText = charlie.toFixed(2);
 }
 
 // Function to download the table as CSV
