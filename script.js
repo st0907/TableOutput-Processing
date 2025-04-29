@@ -1,6 +1,6 @@
 // Fetch the CSV from a URL
 async function loadCSVData() {
-    const url = 'https://drive.google.com/file/d/1_0lk9nzqiU1o1x879eUDJLiILz2Dylpd/view'; // Replace with the actual URL of your CSV file
+    const url = 'https://drive.google.com/uc?export=download&id=1_0lk9nzqiU1o1x879eUDJLiILz2Dylpd'; // Replace with the actual URL of your CSV file
 
     // Fetch the CSV file
     const response = await fetch(url);
