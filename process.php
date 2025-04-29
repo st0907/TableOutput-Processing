@@ -1,22 +1,19 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
-    $fileTmp = $_FILES['file']['tmp_name'];
-    $fileName = basename($_FILES['file']['name']);
-    $uploadDir = 'uploads/';
+if (isset($_FILES['csvFile']) && $_FILES['csvFile']['error'] == 0) {
+    $file = $_FILES['csvFile']['tmp_name'];
+    $rows = [];
 
-    // Create uploads folder if it doesn't exist
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
+    if (($handle = fopen($file, 'r')) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $rows[] = $data;
+        }
+        fclose($handle);
     }
 
-    $destination = $uploadDir . $fileName;
-
-    if (move_uploaded_file($fileTmp, $destination)) {
-        echo "File uploaded successfully: <a href='$destination'>$fileName</a>";
-    } else {
-        echo "File upload failed.";
-    }
+    // Return JSON
+    header('Content-Type: application/json');
+    echo json_encode($rows);
 } else {
-    echo "No file received.";
+    echo json_encode([]);
 }
 ?>
